@@ -1,10 +1,11 @@
 const express = require('express');
 const router = express.Router();
+const request = require('request');
 
 let uid = 'User';
 let collegeId = 0;
-let center = "XYZ";
-const centers = [
+//let center = "XYZ";
+let centers = [
   {name: "A", id: "A", seatsAvailable: 1, isFilled: false},
   {name: "B", id: "B", seatsAvailable: 2, isFilled: false},
   {name: "C", id: "C", seatsAvailable: 3, isFilled: false}
@@ -20,7 +21,16 @@ let registeredCandidates = [
 
 function getCenter(name, collegeId){
   // Logic to allocate center
-  return center;
+
+  var center ="XYZ";
+ centers.forEach((element, index, array) => {
+     center = element.name;
+     element.seatsAvailable -= 1;
+     if(element.seatsAvailable == 0)
+       element.isFilled=true;
+
+   })
+   return center;
 }
 
 /* GET home page. */
