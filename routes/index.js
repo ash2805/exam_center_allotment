@@ -22,15 +22,17 @@ let registeredCandidates = [
 function getCenter(name, collegeId){
   // Logic to allocate center
 
-  var center ="XYZ";
- centers.forEach((element, index, array) => {
-     center = element.name;
-     element.seatsAvailable -= 1;
-     if(element.seatsAvailable == 0)
-       element.isFilled=true;
-
-   })
-   return center;
+for(i = 0;i < centers.length; i++){
+  if(centers[i].isFilled != false)
+      continue;
+  else {
+    var center = centers[i].name;
+    centers[i].seatsAvailable -= 1;
+    if(centers[i].seatsAvailable == 0)
+      centers[i].isFilled = true;
+    return center;
+  }
+}
 }
 
 /* GET home page. */
